@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import { BrowserRouter, Route, Switch } from 'react-router-dom' // eslint-disable-line
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from './reducers'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-
+// styles
 import './App.css'
-
+// views
+import Category from './views/Category'
+import Home from './views/Home'
+import PostDetail from './views/PostDetail'
 // redux logger helper function
 const logger = store => next => action => {
   console.group(action.type)
@@ -21,27 +23,21 @@ const logger = store => next => action => {
 // dev tool extension
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-/* eslint-disable no-unused-vars */
 const store = createStore(
   reducer,
   composeEnhancers(applyMiddleware(logger, thunk))
 )
-/* eslint-disable no-unused-vars */
 
 class App extends Component {
   render () {
     return (
-      <Provider>
+      <Provider store={store}>
         <BrowserRouter>
-          <div className='App'>
-            <header className='App-header'>
-              <img src={logo} className='App-logo' alt='logo' />
-              <h1 className='App-title'>Welcome to React</h1>
-            </header>
-            <p className='App-intro'>
-              To get started, edit <code>src/App.js</code> and save to reload.
-            </p>
-          </div>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/:category' component={Category} />
+            <Route path='/:category/:post_id' component={PostDetail} />
+          </Switch>
         </BrowserRouter>
       </Provider>
     )
