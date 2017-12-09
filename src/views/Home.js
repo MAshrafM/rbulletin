@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
+// Data
 import { getAllPosts } from '../graphql/queries/posts'
+// Components
 import PostPreview from '../components/PostPreview'
 
 class Home extends Component {
