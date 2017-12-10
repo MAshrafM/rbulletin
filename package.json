@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "apollo-client-preset": "^1.0.5",
+    "classnames": "^2.2.5",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.6.0",
-    "material-ui": "^0.20.0",
+    "material-ui": "^1.0.0-beta.13",
     "material-ui-icons": "^1.0.0-beta.17",
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
