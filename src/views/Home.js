@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
+import Grid from 'material-ui/Grid'
 // Data
 import { getAllPosts } from '../graphql/queries/posts'
 // Components
-import PostPreview from '../components/PostPreview'
+import RenderPosts from '../components/RenderPostPreview'
 import Layout from '../components/Layout'
 import Loader from '../components/Loader'
 
@@ -13,18 +14,13 @@ class Home extends Component {
     return (
       <Layout>
         {!posts && <Loader />}
-        {posts &&
-          posts.edges.map(post => (
-            <PostPreview
-              key={post.node.id}
-              id={post.node.id}
-              date={post.node.date}
-              imageURL={
-                post.node.featuredImage && post.node.featuredImage.sourceUrl
-              }
-              title={post.node.title}
-            />
-          ))}
+        {posts && (
+          <Grid container justify='center'>
+            <Grid item xs={12} sm={8} md={6}>
+              <RenderPosts posts={posts} />
+            </Grid>
+          </Grid>
+        )}
       </Layout>
     )
   }
