@@ -4,12 +4,13 @@ import { graphql } from 'react-apollo'
 import { getAllPosts } from '../graphql/queries/posts'
 // Components
 import PostPreview from '../components/PostPreview'
+import Layout from '../components/Layout'
 
 class Home extends Component {
   render () {
     const posts = this.props.data.posts
     return (
-      <div>
+      <Layout>
         {!posts && <h1>Loading...</h1>}
         {posts &&
           posts.edges.map(post => (
@@ -23,7 +24,7 @@ class Home extends Component {
               title={post.node.title}
             />
           ))}
-      </div>
+      </Layout>
     )
   }
 }
