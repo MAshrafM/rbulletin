@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Helmet } from 'react-helmet'
 import { graphql } from 'react-apollo'
 import Grid from 'material-ui/Grid'
 // Data
@@ -13,6 +14,9 @@ class Home extends Component {
     const posts = this.props.data.posts
     return (
       <Layout>
+        <Helmet>
+          <title>Home</title>
+        </Helmet>
         {!posts && <Loader />}
         {posts && (
           <Grid container justify='center'>

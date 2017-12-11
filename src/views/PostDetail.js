@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Helmet } from 'react-helmet'
 import { graphql } from 'react-apollo'
 // Data
 import { SinglePostDetail } from '../graphql/queries/posts'
@@ -18,6 +19,9 @@ class PostDetail extends Component {
 
     return (
       <div>
+        <Helmet>
+          <title>{post.title}</title>
+        </Helmet>
         <h1>{post.title}</h1>
         <img
           alt=''
@@ -35,6 +39,9 @@ class PostDetail extends Component {
     const isLoading = this.props.data.loading
     return (
       <Layout>
+        <Helmet>
+          <title>Loading...</title>
+        </Helmet>
         {isLoading && <Loader />}
         {!isLoading && this.renderPost()}
       </Layout>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Helmet } from 'react-helmet'
 // Data
 import { graphql } from 'react-apollo'
 import { getCategories } from '../graphql/queries/categories'
@@ -17,6 +18,9 @@ class Category extends Component {
     const categories = this.props.data.categories
     return (
       <div>
+        <Helmet>
+          <title>Posts By Categories</title>
+        </Helmet>
         {categories.edges.map(category => (
           <CategoryView
             key={category.node.id}
