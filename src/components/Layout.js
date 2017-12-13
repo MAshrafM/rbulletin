@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+// Material
 import { withStyles, MuiThemeProvider } from 'material-ui/styles'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
@@ -9,9 +11,13 @@ import Divider from 'material-ui/Divider'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
-import { ListItem, ListItemText } from 'material-ui/List'
+import { ListItem, ListItemText, ListItemIcon } from 'material-ui/List'
+import ListSubheader from 'material-ui/List/ListSubheader'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
-import { Link } from 'react-router-dom'
+import PrintIcon from 'material-ui-icons/Print'
+import DashBoardIcon from 'material-ui-icons/Dashboard'
+import SearchIcon from 'material-ui-icons/Search'
+import AlarmClock from 'material-ui-icons/Alarm'
 
 const drawerWidth = 250
 const styles = theme => ({
@@ -149,6 +155,15 @@ class Layout extends Component {
                 >
                   React Bulletin
                 </Typography>
+                <IconButton color='contrast' aria-label='Search'>
+                  <SearchIcon />
+                </IconButton>
+                <IconButton color='contrast' aria-label='Dashboard'>
+                  <DashBoardIcon />
+                </IconButton>
+                <IconButton color='contrast' aria-label='Print'>
+                  <PrintIcon />
+                </IconButton>
                 <IconButton color='contrast' aria-label='More'>
                   <MoreVertIcon />
                 </IconButton>
@@ -175,9 +190,13 @@ class Layout extends Component {
                   </IconButton>
                 </div>
                 <Divider />
+                <ListSubheader>Current Events</ListSubheader>
                 <Link to='/' className={classes.link}>
                   <ListItem button>
-                    <ListItemText primary='Home' />
+                    <ListItemIcon>
+                      <AlarmClock />
+                    </ListItemIcon>
+                    <ListItemText inset secondary='Home' />
                   </ListItem>
                 </Link>
                 <Divider />
