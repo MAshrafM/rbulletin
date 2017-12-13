@@ -92,6 +92,10 @@ const styles = theme => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     })
+  },
+  image: {
+    height: '100%',
+    width: '100%'
   }
 })
 
@@ -137,7 +141,12 @@ class Layout extends Component {
                 >
                   <MenuIcon />
                 </IconButton>
-                <Typography type='title' color='inherit' noWrap>
+                <Typography
+                  className={classes.flex}
+                  type='title'
+                  color='inherit'
+                  noWrap
+                >
                   React Bulletin
                 </Typography>
                 <IconButton color='contrast' aria-label='More'>
@@ -154,6 +163,13 @@ class Layout extends Component {
             >
               <div className={classes.drawerInner}>
                 <div className={classes.drawerHeader}>
+                  <ListItem>
+                    <img
+                      className={classes.image}
+                      alt='logo'
+                      src='https://raw.githubusercontent.com/dabbott/react-native-express/master/static/logo.png'
+                    />
+                  </ListItem>
                   <IconButton onClick={this.handleDrawerClose}>
                     <ChevronLeftIcon />
                   </IconButton>
