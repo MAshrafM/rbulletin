@@ -21,14 +21,15 @@ class Category extends Component {
         <Helmet>
           <title>Posts By Categories</title>
         </Helmet>
-        {categories.edges.map(category => (
-          <CategoryView
-            key={category.node.id}
-            id={category.node.id}
-            name={category.node.name}
-            posts={category.node.posts}
-          />
-        ))}
+        {categories &&
+          categories.edges.map(category => (
+            <CategoryView
+              key={category.node.id}
+              id={category.node.id}
+              name={category.node.name}
+              posts={category.node.posts}
+            />
+          ))}
       </div>
     )
   }

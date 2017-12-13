@@ -1,13 +1,12 @@
 import gql from 'graphql-tag'
-import { postFragment } from '../fragments'
+import { postFragment, categoriesFragment } from '../fragments'
 
 export const getCategories = gql`
-  query getAllPosts {
+  query getAllCategoriesandPosts {
     categories {
+      ...CategoryData
       edges {
         node {
-          id
-          name
           posts {
             ...PostData
           }
@@ -16,4 +15,14 @@ export const getCategories = gql`
     }
   }
   ${postFragment}
+  ${categoriesFragment}
+`
+
+export const getAllCategories = gql`
+  query getAllCategories {
+    categories {
+      ...CategoryData
+    }
+  }
+  ${categoriesFragment}
 `

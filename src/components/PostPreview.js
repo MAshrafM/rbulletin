@@ -28,7 +28,9 @@ class PostPreview extends Component {
 
     return (
       <Card className={classes.card}>
-        <CardMedia className={classes.media} image={this.props.imageURL} />
+        {this.props.imageURL && (
+          <CardMedia className={classes.media} image={this.props.imageURL} />
+        )}
         <CardContent>
           <Typography type='headline' component='h2'>
             {this.props.title}
