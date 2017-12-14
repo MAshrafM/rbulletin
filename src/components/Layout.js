@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 // Material
-import { withStyles, MuiThemeProvider } from 'material-ui/styles'
+import {
+  withStyles,
+  MuiThemeProvider,
+  createMuiTheme
+} from 'material-ui/styles'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
 import AppBar from 'material-ui/AppBar'
@@ -9,8 +13,9 @@ import Toolbar from 'material-ui/Toolbar'
 import { Typography } from 'material-ui'
 import Divider from 'material-ui/Divider'
 import IconButton from 'material-ui/IconButton'
+import Menu, { MenuItem } from 'material-ui/Menu'
 import MenuIcon from 'material-ui-icons/Menu'
-import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
+// import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import { ListItem, ListItemText, ListItemIcon } from 'material-ui/List'
 import ListSubheader from 'material-ui/List/ListSubheader'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
@@ -20,6 +25,12 @@ import SearchIcon from 'material-ui-icons/Search'
 import AlarmClock from 'material-ui-icons/Alarm'
 
 const drawerWidth = 250
+
+const theme = createMuiTheme({
+  palette: {
+    primary1Color: '#039be5'
+  }
+})
 const styles = theme => ({
   flex: {
     flex: 1
@@ -102,17 +113,39 @@ const styles = theme => ({
   image: {
     height: '100%',
     width: '100%'
+  },
+  logo: {
+    width: '150px',
+    margin: '8px auto'
   }
 })
 
 class Layout extends Component {
   state = {
-    open: true
+    open: true,
+    anchorEl: null,
+    openMenu: false
   }
+
   constructor () {
     super()
     this.handleDrawerClose = this.handleDrawerClose.bind(this)
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleRequestClose = this.handleRequestClose.bind(this)
+  }
+
+  handleClick (event) {
+    this.setState({
+      openMenu: true,
+      anchorEl: event.currentTarget
+    })
+  }
+
+  handleRequestClose () {
+    this.setState({
+      openMenu: false
+    })
   }
 
   handleDrawerOpen () {
@@ -126,7 +159,7 @@ class Layout extends Component {
   render () {
     const classes = this.props.classes
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <div className={classes.appFrame}>
             <AppBar
@@ -164,9 +197,23 @@ class Layout extends Component {
                 <IconButton color='contrast' aria-label='Print'>
                   <PrintIcon />
                 </IconButton>
-                <IconButton color='contrast' aria-label='More'>
+                <IconButton
+                  color='contrast'
+                  aria-label='More'
+                  aria-owns={this.state.opeMenu ? 'simple-menu' : null}
+                  aria-haspopup='true'
+                  onClick={this.handleClick}
+                >
                   <MoreVertIcon />
                 </IconButton>
+                <Menu
+                  id='simple-menu'
+                  anchorEl={this.state.anchorEl}
+                  open={this.state.openMenu}
+                  onRequestClose={this.handleRequestClose}
+                >
+                  <MenuItem onClick={this.handleRequestClose}>Logout</MenuItem>
+                </Menu>
               </Toolbar>
             </AppBar>
             <Drawer
@@ -178,16 +225,11 @@ class Layout extends Component {
             >
               <div className={classes.drawerInner}>
                 <div className={classes.drawerHeader}>
-                  <ListItem>
-                    <img
-                      className={classes.image}
-                      alt='logo'
-                      src='https://raw.githubusercontent.com/dabbott/react-native-express/master/static/logo.png'
-                    />
-                  </ListItem>
-                  <IconButton onClick={this.handleDrawerClose}>
-                    <ChevronLeftIcon />
-                  </IconButton>
+                  <img
+                    className={classes.logo}
+                    alt='logo'
+                    src='https://raw.githubusercontent.com/dabbott/react-native-express/master/static/logo.png'
+                  />
                 </div>
                 <Divider />
                 <ListSubheader>Current Events</ListSubheader>

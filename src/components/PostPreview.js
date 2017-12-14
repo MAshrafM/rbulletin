@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // Material UI
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import { withStyles } from 'material-ui/styles'
+import { blue, grey } from 'material-ui/colors'
 
 const styles = {
   card: {
@@ -12,6 +13,16 @@ const styles = {
   },
   media: {
     height: 500
+  },
+  titleColor: {
+    color: blue[800]
+  },
+  dateColor: {
+    color: grey[500]
+  },
+  link: {
+    color: 'inherit',
+    textDecoration: 'none'
   }
 }
 
@@ -22,7 +33,7 @@ class PostPreview extends Component {
     this.transitionToPost = this.transitionToPost.bind(this)
   }
 
-  renderCard () {
+  render () {
     const classes = this.props.classes
     const date = new Date(this.props.date).toLocaleString()
 
@@ -32,28 +43,31 @@ class PostPreview extends Component {
           <CardMedia className={classes.media} image={this.props.imageURL} />
         )}
         <CardContent>
-          <Typography type='headline' component='h2'>
+          <Typography
+            type='headline'
+            component='h2'
+            className={classes.titleColor}
+          >
             {this.props.title}
           </Typography>
-          <Typography type='subheading' component='h3'>
+          <Typography
+            type='subheading'
+            component='h3'
+            className={classes.dateColor}
+          >
             {date}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button dense color='primary' onClick={this.transitionToPost}>
-            Read More
-          </Button>
+          <Link className={classes.link} to={`/post/${this.props.id}`}>
+            <Button dense color='primary'>
+              Read More
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     )
   }
-
-  transitionToPost () {
-    this.props.history.push(`/posts/${this.props.id}`)
-  }
-  render () {
-    return <div>{this.renderCard()}</div>
-  }
 }
 
-export default withStyles(styles)(withRouter(PostPreview))
+export default withStyles(styles)(PostPreview)
