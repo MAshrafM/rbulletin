@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo'
 // Data
 import { SinglePostDetail } from '../graphql/queries/posts'
 // components
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
 
 class PostDetail extends Component {

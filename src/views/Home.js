@@ -6,7 +6,7 @@ import Grid from 'material-ui/Grid'
 import { getAllPosts } from '../graphql/queries/posts'
 // Components
 import RenderPosts from '../components/RenderPostPreview'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
 
 class Home extends Component {

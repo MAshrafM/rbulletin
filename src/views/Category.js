@@ -5,7 +5,7 @@ import { graphql } from 'react-apollo'
 import { getCategories } from '../graphql/queries/categories'
 // Component
 import Loader from '../components/Loader'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/index'
 import CategoryView from '../components/CategoryView'
 
 class Category extends Component {
