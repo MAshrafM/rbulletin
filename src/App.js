@@ -17,7 +17,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/:category' component={Category} />
+            <Route exact path='/category/:slug' component={Category} />
             <Route path='/:category/:post_id' component={PostDetail} />
           </Switch>
         </BrowserRouter>
