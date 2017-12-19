@@ -27,12 +27,6 @@ const styles = {
 }
 
 class PostPreview extends Component {
-  constructor () {
-    super()
-    this.renderCard = this.renderCard.bind(this)
-    this.transitionToPost = this.transitionToPost.bind(this)
-  }
-
   render () {
     const classes = this.props.classes
     const date = new Date(this.props.date).toLocaleString()

@@ -21,6 +21,14 @@ class Layout extends Component {
     this.handleRequestClose = this.handleRequestClose.bind(this)
   }
 
+  componentWillMount () {
+    if (window.innerWidth < 770) {
+      this.setState({
+        open: false
+      })
+    }
+  }
+
   handleClick (event) {
     this.setState({
       openMenu: true,
@@ -54,6 +62,7 @@ class Layout extends Component {
             openMenu={this.state.openMenu}
             handleDrawerOpen={this.handleDrawerOpen}
             handleClick={this.handleClick}
+            handleRequestClose={this.handleRequestClose}
           />
           <SideBar
             open={this.state.open}
