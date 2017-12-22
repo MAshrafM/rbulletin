@@ -24,13 +24,15 @@ class SideComponent extends Component {
         >
           <div className={classes.drawerInner}>
             <div className={classes.drawerHeader}>
-              <ListItem>
-                <img
-                  className={classes.logo}
-                  alt='logo'
-                  src='https://raw.githubusercontent.com/dabbott/react-native-express/master/static/logo.png'
-                />
-              </ListItem>
+              <Link to='/'>
+                <ListItem>
+                  <img
+                    className={classes.logo}
+                    alt='logo'
+                    src='https://raw.githubusercontent.com/dabbott/react-native-express/master/static/logo.png'
+                  />
+                </ListItem>
+              </Link>
               <IconButton onClick={this.props.handleDrawerClose}>
                 <ChevronLeftIcon />
               </IconButton>
