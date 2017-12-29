@@ -32,7 +32,7 @@ class PostPreview extends Component {
     const date = new Date(this.props.date).toLocaleString()
 
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} style={this.props.style}>
         {this.props.imageURL && (
           <CardMedia className={classes.media} image={this.props.imageURL} />
         )}
