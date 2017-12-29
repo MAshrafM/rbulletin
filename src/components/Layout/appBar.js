@@ -44,13 +44,17 @@ class TopBar extends Component {
             >
               React Bulletin
             </Typography>
-            <IconButton color='contrast' aria-label='Search'>
+            <IconButton color='primary' aria-label='Search'>
               <SearchIcon />
             </IconButton>
-            <IconButton color='contrast' aria-label='Dashboard'>
+            <IconButton
+              color='primary'
+              onClick={this.props.handleLayoutChange}
+              aria-label='Dashboard'
+            >
               <DashBoardIcon />
             </IconButton>
-            <IconButton color='contrast' aria-label='Print'>
+            <IconButton color='primary' aria-label='Print'>
               <PrintIcon />
             </IconButton>
             <IconButton

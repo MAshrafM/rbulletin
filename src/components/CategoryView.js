@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import RenderPosts from '../components/RenderPostPreview'
+import GridRenderer from '../components/GridTypes/GridRenderer'
 
 class CategoryView extends Component {
   render () {
@@ -7,7 +7,7 @@ class CategoryView extends Component {
       <div>
         <h1>Posts in {this.props.name} Category</h1>
         <br />
-        <RenderPosts posts={this.props.posts} />
+        <GridRenderer posts={this.props.posts} />
         <br />
         <hr />
         <br />

@@ -12,7 +12,7 @@ const styles = {
     marginBottom: 15
   },
   media: {
-    height: 500
+    height: 250
   },
   titleColor: {
     color: blue[800]

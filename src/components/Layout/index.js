@@ -10,7 +10,8 @@ class Layout extends Component {
   state = {
     open: true,
     anchorEl: null,
-    openMenu: false
+    openMenu: false,
+    viewType: 'list'
   }
 
   constructor () {
@@ -19,6 +20,7 @@ class Layout extends Component {
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleRequestClose = this.handleRequestClose.bind(this)
+    this.handleLayoutChange = this.handleLayoutChange.bind(this)
   }
 
   componentWillMount () {
@@ -50,6 +52,14 @@ class Layout extends Component {
     this.setState({ open: false })
   }
 
+  handleLayoutChange () {
+    const newView = this.state.viewType === 'grid' ? 'list' : 'grid'
+    window.localStorage.setItem('l-type', newView)
+    this.setState({
+      viewType: newView
+    })
+  }
+
   render () {
     const classes = this.props.classes
     return (
@@ -63,6 +73,7 @@ class Layout extends Component {
             handleDrawerOpen={this.handleDrawerOpen}
             handleClick={this.handleClick}
             handleRequestClose={this.handleRequestClose}
+            handleLayoutChange={this.handleLayoutChange}
           />
           <SideBar
             open={this.state.open}
