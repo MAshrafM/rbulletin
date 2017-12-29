@@ -9,6 +9,9 @@ import ListSubheader from 'material-ui/List/ListSubheader'
 // material-ui-icon
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import AlarmClock from 'material-ui-icons/Alarm'
+// Data
+import { graphql } from 'react-apollo'
+import { getAllCategories } from '../../graphql/queries/categories'
 
 class SideComponent extends Component {
   render () {
@@ -48,11 +51,22 @@ class SideComponent extends Component {
               </ListItem>
             </Link>
             <Divider />
-            <Link to='/categories' className={classes.link}>
-              <ListItem button>
-                <ListItemText primary='Categories' />
-              </ListItem>
-            </Link>
+            <ListItem button>
+              <ListItemText primary='Categories' />
+            </ListItem>
+            {!this.props.data.loading &&
+              this.props.data.categories &&
+              this.props.data.categories.edges.map(category => (
+                <Link
+                  key={category.node.id}
+                  to={`/category/${category.node.slug}`}
+                  className={classes.link}
+                >
+                  <ListItem button>
+                    <ListItemText secondary={category.node.name} />
+                  </ListItem>
+                </Link>
+              ))}
             <Divider />
           </div>
         </Drawer>
@@ -61,4 +75,4 @@ class SideComponent extends Component {
   }
 }
 
-export default SideComponent
+export default graphql(getAllCategories)(SideComponent)
