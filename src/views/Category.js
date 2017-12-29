@@ -7,6 +7,8 @@ import { getPostsByCat } from '../graphql/queries/posts'
 import Loader from '../components/Loader'
 import Layout from '../components/Layout/index'
 import PostPreview from '../components/PostPreview'
+// material-ui
+import Grid from 'material-ui/Grid'
 
 class Category extends Component {
   constructor () {
@@ -21,18 +23,22 @@ class Category extends Component {
         <Helmet>
           <title>Posts By Categories</title>
         </Helmet>
-        {posts &&
-          posts.edges.map(post => (
-            <PostPreview
-              key={post.node.id}
-              id={post.node.id}
-              date={post.node.date}
-              title={post.node.title}
-              imageURL={
-                post.node.featuredImage && post.node.featuredImage.sourceUrl
-              }
-            />
-          ))}
+        <Grid container spacing={24}>
+          {posts &&
+            posts.edges.map(post => (
+              <Grid key={post.node.id} item xs={12} sm={6} md={4}>
+                <PostPreview
+                  key={post.node.id}
+                  id={post.node.id}
+                  date={post.node.date}
+                  title={post.node.title}
+                  imageURL={
+                    post.node.featuredImage && post.node.featuredImage.sourceUrl
+                  }
+                />
+              </Grid>
+            ))}
+        </Grid>
       </div>
     )
   }
