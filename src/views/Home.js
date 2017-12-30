@@ -16,7 +16,10 @@ class Home extends Component {
         <Helmet>
           <title>Home</title>
         </Helmet>
-        {!posts && <Loader />}
+        {!this.props.data.error && !posts && <Loader />}
+        {this.props.data.error && (
+          <Error error={this.props.data.error.message} />
+        )}
         {posts && <GridRenderer posts={posts} />}
       </Layout>
     )

@@ -7,6 +7,7 @@ import { getPostsByCat } from '../graphql/queries/posts'
 import Loader from '../components/Loader'
 import Layout from '../components/Layout/index'
 import PostPreview from '../components/PostPreview'
+import Error from '../components/Error'
 // material-ui
 import Grid from 'material-ui/Grid'
 
@@ -48,7 +49,10 @@ class Category extends Component {
     const isLoading = this.props.data.loading
     return (
       <Layout>
-        {isLoading && <Loader />}
+        {!this.props.data.error && isLoading && <Loader />}
+        {this.props.data.error && (
+          <Error error={this.props.data.error.message} />
+        )}
         {isLoading && this.renderCategories()}
       </Layout>
     )
