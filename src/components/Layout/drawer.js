@@ -10,6 +10,7 @@ import Hidden from 'material-ui/Hidden'
 // material-ui-icon
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import AlarmClock from 'material-ui-icons/Alarm'
+import ClockIcon from 'material-ui-icons/Timer'
 // Data
 import { graphql } from 'react-apollo'
 import { getAllCategories } from '../../graphql/queries/categories'
@@ -60,6 +61,16 @@ class SideComponent extends Component {
             </Link>
           ))}
         <Divider />
+        <ListItem button>
+          <ListItemIcon>
+            <ClockIcon />
+          </ListItemIcon>
+          <ListItemText inset primary='Filter By Date' />
+        </ListItem>
+        <Divider />
+        <ListSubheader>Submit Announcement</ListSubheader>
+        <ListSubheader>Classic Mode</ListSubheader>
+        <ListSubheader>Help</ListSubheader>
       </div>
     )
     return (
