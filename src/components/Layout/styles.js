@@ -82,6 +82,9 @@ const styles = theme => ({
     height: '100%',
     width: '100%'
   },
+  btn: {
+    cursor: 'pointer'
+  },
   logo: {
     width: '150px',
     margin: '8px auto'

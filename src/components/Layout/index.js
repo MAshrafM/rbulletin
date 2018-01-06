@@ -5,13 +5,15 @@ import theme from './cusTheme'
 import TopBar from './appBar'
 import SideBar from './drawer'
 import styles from './styles'
+import AnnouncementForm from './AnnouncementForm'
 
 class Layout extends Component {
   state = {
     open: true,
     anchorEl: null,
     openMenu: false,
-    viewType: 'list'
+    viewType: 'list',
+    btnDrawerOpen: false
   }
 
   constructor () {
@@ -21,6 +23,7 @@ class Layout extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleRequestClose = this.handleRequestClose.bind(this)
     this.handleLayoutChange = this.handleLayoutChange.bind(this)
+    this.toggleDrawer = this.toggleDrawer.bind(this)
   }
 
   componentWillMount () {
@@ -60,6 +63,12 @@ class Layout extends Component {
     })
   }
 
+  toggleDrawer () {
+    this.setState({
+      btnDrawerOpen: !this.state.btnDrawerOpen
+    })
+  }
+
   render () {
     const classes = this.props.classes
     return (
@@ -80,6 +89,11 @@ class Layout extends Component {
             open={this.state.open}
             classes={this.props.classes}
             handleDrawerClose={this.handleDrawerClose}
+            toggleDrawer={this.toggleDrawer}
+          />
+          <AnnouncementForm
+            btnDrawerOpen={this.state.btnDrawerOpen}
+            toggleDrawer={this.toggleDrawer}
           />
           <div className={classes.appFrame}>
             <main
