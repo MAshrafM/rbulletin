@@ -9,6 +9,7 @@ import Menu, { MenuItem } from 'material-ui/Menu'
 // material-ui-icon
 import MenuIcon from 'material-ui-icons/Menu'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
+import ViewStreamIcon from 'material-ui-icons/ViewStream'
 import PrintIcon from 'material-ui-icons/Print'
 import DashBoardIcon from 'material-ui-icons/Dashboard'
 import SearchIcon from 'material-ui-icons/Search'
@@ -52,7 +53,11 @@ class TopBar extends Component {
               onClick={this.props.handleLayoutChange}
               aria-label='Dashboard'
             >
-              <DashBoardIcon />
+              {this.props.viewType === 'grid' ? (
+                <ViewStreamIcon />
+              ) : (
+                <DashBoardIcon />
+              )}
             </IconButton>
             <IconButton color='primary' aria-label='Print'>
               <PrintIcon />

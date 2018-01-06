@@ -66,6 +66,7 @@ class Layout extends Component {
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <TopBar
+            viewType={this.state.viewType}
             open={this.state.open}
             anchorEl={this.state.anchorEl}
             classes={this.props.classes}
