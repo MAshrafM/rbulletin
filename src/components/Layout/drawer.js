@@ -22,11 +22,13 @@ class SideComponent extends Component {
       <div className={classes.drawerInner}>
         <div className={classes.drawerHeader}>
           <ListItem>
-            <img
-              className={classes.image}
-              alt='logo'
-              src='https://raw.githubusercontent.com/dabbott/react-native-express/master/static/logo.png'
-            />
+            <Link to='/'>
+              <img
+                className={classes.image}
+                alt='logo'
+                src='https://raw.githubusercontent.com/dabbott/react-native-express/master/static/logo.png'
+              />
+            </Link>
           </ListItem>
           <IconButton
             className={classes.navIconHide}
@@ -36,7 +38,11 @@ class SideComponent extends Component {
           </IconButton>
         </div>
         <Divider />
-        <ListSubheader>Current Events</ListSubheader>
+        <Link to='/' className={classes.link}>
+          <ListItem button>
+            <ListItemText secondary='Current Events' />
+          </ListItem>
+        </Link>
         <Link to='/' className={classes.link}>
           <ListItem button>
             <ListItemIcon>
