@@ -15,6 +15,7 @@ class GridView extends Component {
                 id={post.node.id}
                 date={post.node.date}
                 title={post.node.title}
+                category={post.node.categories.edges[0].node.name}
                 imageURL={
                   post.node.featuredImage && post.node.featuredImage.sourceUrl
                 }

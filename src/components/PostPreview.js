@@ -23,6 +23,9 @@ const styles = {
   link: {
     color: 'inherit',
     textDecoration: 'none'
+  },
+  categoryColor: {
+    color: '#ffb41f'
   }
 }
 
@@ -33,10 +36,10 @@ class PostPreview extends Component {
 
     return (
       <Card className={classes.card} style={this.props.style}>
-        {this.props.imageURL && (
-          <CardMedia className={classes.media} image={this.props.imageURL} />
-        )}
         <CardContent>
+          <Typography type='caption' className={classes.categoryColor}>
+            {this.props.category}
+          </Typography>
           <Typography
             type='headline'
             component='h2'
@@ -51,6 +54,9 @@ class PostPreview extends Component {
           >
             {date}
           </Typography>
+          {this.props.imageURL && (
+            <CardMedia className={classes.media} image={this.props.imageURL} />
+          )}
         </CardContent>
         <CardActions>
           <Link className={classes.link} to={`/post/${this.props.id}`}>

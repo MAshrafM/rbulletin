@@ -18,6 +18,7 @@ class ListView extends Component {
                 post.node.featuredImage && post.node.featuredImage.sourceUrl
               }
               title={post.node.title}
+              category={post.node.categories.edges[0].node.name}
             />
           ))}
         </Grid>
