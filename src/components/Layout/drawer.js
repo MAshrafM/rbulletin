@@ -43,6 +43,7 @@ class SideComponent extends Component {
             <ListItemText secondary='Current Events' />
           </ListItem>
         </Link>
+        <Divider />
         <Link to='/' className={classes.link}>
           <ListItem button>
             <ListItemIcon>
