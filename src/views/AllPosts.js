@@ -41,4 +41,4 @@ class AllPosts extends Component {
   }
 }
 
-export const allPosts = graphql(getAllPosts)(AllPosts)
+export default graphql(getAllPosts)(AllPosts)

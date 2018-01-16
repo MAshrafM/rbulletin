@@ -5,7 +5,7 @@ import theme from './cusTheme'
 import TopBar from './appBar'
 import SideBar from './drawer'
 import styles from './styles'
-import AnnouncementForm from './AnnouncementForm'
+import AnnouncementForm from './AnnoucementForm'
 
 class Layout extends Component {
   state = {

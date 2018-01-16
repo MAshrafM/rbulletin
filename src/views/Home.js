@@ -7,6 +7,7 @@ import { getAllPosts } from '../graphql/queries/posts'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
+import Error from '../components/Error'
 
 class Home extends Component {
   render () {

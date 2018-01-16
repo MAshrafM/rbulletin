@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // components
-import PostPreview from '../components/PostPreview'
+import PostPreview from '../PostPreview'
 // material-ui
 import Grid from 'material-ui/Grid'
 
