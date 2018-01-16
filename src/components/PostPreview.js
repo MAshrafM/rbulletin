@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 // Material UI
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
@@ -47,7 +48,9 @@ class PostPreview extends Component {
             component='h2'
             className={classes.titleColor}
           >
-            {this.props.title}
+            <Link className={classes.link} to={`/post/${this.props.id}`}>
+              {this.props.title}
+            </Link>
           </Typography>
           <Typography
             type='subheading'

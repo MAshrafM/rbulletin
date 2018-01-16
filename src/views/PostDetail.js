@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'react-apollo'
 // Data
@@ -22,7 +23,9 @@ class PostDetail extends Component {
         <Helmet>
           <title>{post.title}</title>
         </Helmet>
-        <h1>{post.title}</h1>
+        <Link to={`/post/${post.id}`}>
+          <h1>{post.title}</h1>
+        </Link>
         <img
           alt=''
           style={{ height: '600px', width: '800px' }}
